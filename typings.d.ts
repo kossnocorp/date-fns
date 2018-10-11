@@ -788,6 +788,14 @@ declare module 'date-fns' {
   ): Date
   namespace parse {}
 
+  function parseDate (
+    dateString: string,
+    formatString: string,
+    baseDate: Date | string | number,
+    options?: Options
+  ): Date
+  namespace parseDate {}
+
   function setDate (
     date: Date | string | number,
     dayOfMonth: number,
@@ -1592,6 +1600,11 @@ declare module 'date-fns/parse' {
   export = parse
 }
 
+declare module 'date-fns/parseDate' {
+  import {parseDate} from 'date-fns'
+  export = parseDate
+}
+
 declare module 'date-fns/setDate' {
   import {setDate} from 'date-fns'
   export = setDate
@@ -2332,6 +2345,11 @@ declare module 'date-fns/parse/index' {
   export = parse
 }
 
+declare module 'date-fns/parseDate/index' {
+  import {parseDate} from 'date-fns'
+  export = parseDate
+}
+
 declare module 'date-fns/setDate/index' {
   import {setDate} from 'date-fns'
   export = setDate
@@ -3070,6 +3088,11 @@ declare module 'date-fns/min/index.js' {
 declare module 'date-fns/parse/index.js' {
   import {parse} from 'date-fns'
   export = parse
+}
+
+declare module 'date-fns/parseDate/index.js' {
+  import {parseDate} from 'date-fns'
+  export = parseDate
 }
 
 declare module 'date-fns/setDate/index.js' {
@@ -3921,6 +3944,12 @@ declare module 'date-fns/fp' {
 
   const parse: CurriedFn3<Date | string | number, string, string, Date>
   namespace parse {}
+
+  const parseDate: CurriedFn3<Date | string | number, string, string, Date>
+  namespace parseDate {}
+
+  const parseDateWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>
+  namespace parseDateWithOptions {}
 
   const parseWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>
   namespace parseWithOptions {}
@@ -5247,6 +5276,16 @@ declare module 'date-fns/fp/minWithOptions' {
 declare module 'date-fns/fp/parse' {
   import {parse} from 'date-fns/fp'
   export = parse
+}
+
+declare module 'date-fns/fp/parseDate' {
+  import {parseDate} from 'date-fns/fp'
+  export = parseDate
+}
+
+declare module 'date-fns/fp/parseDateWithOptions' {
+  import {parseDateWithOptions} from 'date-fns/fp'
+  export = parseDateWithOptions
 }
 
 declare module 'date-fns/fp/parseWithOptions' {
@@ -6729,6 +6768,16 @@ declare module 'date-fns/fp/parse/index' {
   export = parse
 }
 
+declare module 'date-fns/fp/parseDate/index' {
+  import {parseDate} from 'date-fns/fp'
+  export = parseDate
+}
+
+declare module 'date-fns/fp/parseDateWithOptions/index' {
+  import {parseDateWithOptions} from 'date-fns/fp'
+  export = parseDateWithOptions
+}
+
 declare module 'date-fns/fp/parseWithOptions/index' {
   import {parseWithOptions} from 'date-fns/fp'
   export = parseWithOptions
@@ -8209,6 +8258,16 @@ declare module 'date-fns/fp/parse/index.js' {
   export = parse
 }
 
+declare module 'date-fns/fp/parseDate/index.js' {
+  import {parseDate} from 'date-fns/fp'
+  export = parseDate
+}
+
+declare module 'date-fns/fp/parseDateWithOptions/index.js' {
+  import {parseDateWithOptions} from 'date-fns/fp'
+  export = parseDateWithOptions
+}
+
 declare module 'date-fns/fp/parseWithOptions/index.js' {
   import {parseWithOptions} from 'date-fns/fp'
   export = parseWithOptions
@@ -9310,6 +9369,14 @@ declare module 'date-fns/esm' {
   ): Date
   namespace parse {}
 
+  function parseDate (
+    dateString: string,
+    formatString: string,
+    baseDate: Date | string | number,
+    options?: Options
+  ): Date
+  namespace parseDate {}
+
   function setDate (
     date: Date | string | number,
     dayOfMonth: number,
@@ -10114,6 +10181,11 @@ declare module 'date-fns/esm/parse' {
   export default parse
 }
 
+declare module 'date-fns/esm/parseDate' {
+  import {parseDate} from 'date-fns/esm'
+  export default parseDate
+}
+
 declare module 'date-fns/esm/setDate' {
   import {setDate} from 'date-fns/esm'
   export default setDate
@@ -10854,6 +10926,11 @@ declare module 'date-fns/esm/parse/index' {
   export default parse
 }
 
+declare module 'date-fns/esm/parseDate/index' {
+  import {parseDate} from 'date-fns/esm'
+  export default parseDate
+}
+
 declare module 'date-fns/esm/setDate/index' {
   import {setDate} from 'date-fns/esm'
   export default setDate
@@ -11592,6 +11669,11 @@ declare module 'date-fns/esm/min/index.js' {
 declare module 'date-fns/esm/parse/index.js' {
   import {parse} from 'date-fns/esm'
   export default parse
+}
+
+declare module 'date-fns/esm/parseDate/index.js' {
+  import {parseDate} from 'date-fns/esm'
+  export default parseDate
 }
 
 declare module 'date-fns/esm/setDate/index.js' {
@@ -12443,6 +12525,12 @@ declare module 'date-fns/esm/fp' {
 
   const parse: CurriedFn3<Date | string | number, string, string, Date>
   namespace parse {}
+
+  const parseDate: CurriedFn3<Date | string | number, string, string, Date>
+  namespace parseDate {}
+
+  const parseDateWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>
+  namespace parseDateWithOptions {}
 
   const parseWithOptions: CurriedFn4<Options, Date | string | number, string, string, Date>
   namespace parseWithOptions {}
@@ -13769,6 +13857,16 @@ declare module 'date-fns/esm/fp/minWithOptions' {
 declare module 'date-fns/esm/fp/parse' {
   import {parse} from 'date-fns/esm/fp'
   export default parse
+}
+
+declare module 'date-fns/esm/fp/parseDate' {
+  import {parseDate} from 'date-fns/esm/fp'
+  export default parseDate
+}
+
+declare module 'date-fns/esm/fp/parseDateWithOptions' {
+  import {parseDateWithOptions} from 'date-fns/esm/fp'
+  export default parseDateWithOptions
 }
 
 declare module 'date-fns/esm/fp/parseWithOptions' {
@@ -15251,6 +15349,16 @@ declare module 'date-fns/esm/fp/parse/index' {
   export default parse
 }
 
+declare module 'date-fns/esm/fp/parseDate/index' {
+  import {parseDate} from 'date-fns/esm/fp'
+  export default parseDate
+}
+
+declare module 'date-fns/esm/fp/parseDateWithOptions/index' {
+  import {parseDateWithOptions} from 'date-fns/esm/fp'
+  export default parseDateWithOptions
+}
+
 declare module 'date-fns/esm/fp/parseWithOptions/index' {
   import {parseWithOptions} from 'date-fns/esm/fp'
   export default parseWithOptions
@@ -16729,6 +16837,16 @@ declare module 'date-fns/esm/fp/minWithOptions/index.js' {
 declare module 'date-fns/esm/fp/parse/index.js' {
   import {parse} from 'date-fns/esm/fp'
   export default parse
+}
+
+declare module 'date-fns/esm/fp/parseDate/index.js' {
+  import {parseDate} from 'date-fns/esm/fp'
+  export default parseDate
+}
+
+declare module 'date-fns/esm/fp/parseDateWithOptions/index.js' {
+  import {parseDateWithOptions} from 'date-fns/esm/fp'
+  export default parseDateWithOptions
 }
 
 declare module 'date-fns/esm/fp/parseWithOptions/index.js' {
@@ -19524,6 +19642,13 @@ interface dateFns {
   ): Date
 
   parse(
+    dateString: string,
+    formatString: string,
+    baseDate: Date | string | number,
+    options?: Options
+  ): Date
+
+  parseDate(
     dateString: string,
     formatString: string,
     baseDate: Date | string | number,
