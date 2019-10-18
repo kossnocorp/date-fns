@@ -373,13 +373,17 @@ function generateTypeScriptTypings(fns, aliases, locales, constants) {
     .map(module => module.definition)
 
   const globalInterfaceDefinition = formatBlock`
-    interface dateFns {
-      ${addSeparator(
-        nonFPFns
-          .map(getTypeScriptInterfaceDefinition)
-          .concat(constants.map(c => `${c.name}: ${c.type.names.join(' | ')}`)),
-        '\n'
-      )}
+    declare module 'date-fns' {
+      export interface dateFns {
+        ${addSeparator(
+          nonFPFns
+            .map(getTypeScriptInterfaceDefinition)
+            .concat(
+              constants.map(c => `${c.name}: ${c.type.names.join(' | ')}`)
+            ),
+          '\n'
+        )}
+      }
     }
   `
 
