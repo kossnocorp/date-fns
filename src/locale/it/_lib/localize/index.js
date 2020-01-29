@@ -92,7 +92,7 @@ var formattingDayPeriodValues = {
 
 function ordinalNumber (dirtyNumber) {
   var number = Number(dirtyNumber)
-  return number + 'º'
+  return String(number)
 }
 
 var localize = {
