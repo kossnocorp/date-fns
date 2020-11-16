@@ -12,7 +12,7 @@ import {
 } from '../_lib/protectedTokens/index'
 import toInteger from '../_lib/toInteger/index'
 import requiredArgs from '../_lib/requiredArgs/index'
-import { Locale } from 'date-fns';
+import { Locale } from 'date-fns'
 
 // This RegExp consists of three parts separated by `|`:
 // - [yYQqMLwIdDecihHKkms]o matches any available ordinal number token
@@ -348,11 +348,11 @@ const unescapedLatinCharacterRegExp = /[a-zA-Z]/
  */
 
 interface Options {
-  locale?: Locale,
-  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
-  firstWeekContainsDate?: number,
-  useAdditionalWeekYearTokens?: boolean,
-  useAdditionalDayOfYearTokens?: boolean,
+  locale?: Locale
+  weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
+  firstWeekContainsDate?: number
+  useAdditionalWeekYearTokens?: boolean
+  useAdditionalDayOfYearTokens?: boolean
 }
 
 export default function format(dirtyDate: Date | number, dirtyFormatStr: string, dirtyOptions?: Options): string {
@@ -421,7 +421,7 @@ export default function format(dirtyDate: Date | number, dirtyFormatStr: string,
     _originalDate: originalDate
   }
 
-  let result;
+  let result
 
   const longFormattingTokens = formatStr.match(longFormattingTokensRegExp)
 
@@ -438,7 +438,7 @@ export default function format(dirtyDate: Date | number, dirtyFormatStr: string,
       }
       return substring
     })
-    .join('');
+    .join('')
 
   const formattingTokens = result.match(formattingTokensRegExp)
 
