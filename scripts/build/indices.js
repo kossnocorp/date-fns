@@ -44,11 +44,11 @@ function generateIndex(files, isFP, includeConstants) {
         `export { default as ${fn.name} } from '${fn.path.replace(
           /\.js$/,
           ''
-        )}/index.js'`
+        )}/index'`
     )
     .concat(
       includeConstants
-        ? `export * from '${isFP ? '..' : '.'}/constants/index.js'`
+        ? `export * from '${isFP ? '..' : '.'}/constants/index'`
         : []
     )
 

@@ -7,23 +7,22 @@ import match from './_lib/match/index'
 /**
  * @type {Locale}
  * @category Locales
- * @summary Arabic locale (Algerian Arabic).
- * @language Algerian Arabic
- * @iso-639-2 ara
- * @author Badreddine Boumaza [@badre429]{@link https://github.com/badre429}
- * @author Ahmed ElShahat [@elshahat]{@link https://github.com/elshahat}
+ * @summary Western Frisian locale (Netherlands).
+ * @language West Frisian
+ * @iso-639-2 fry
+ * @author Damon Asberg [@damon02]{@link https://github.com/damon02}
  */
 var locale = {
-  code: 'ar-DZ',
+  code: 'fy',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
   localize: localize,
   match: match,
   options: {
-    weekStartsOn: 0 /* Sunday */,
-    firstWeekContainsDate: 1,
-  },
+    weekStartsOn: 1 /* Monday */,
+    firstWeekContainsDate: 4
+  }
 }
 
 export default locale
