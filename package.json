@@ -25,7 +25,8 @@
     "lint-types": "eslint --config=.ts-eslintrc.js typings.d.ts",
     "locale-snapshots": "env TZ=utc babel-node --extensions .ts,.js ./scripts/build/localeSnapshots/index.js",
     "benchmark": "env TEST_BENCHMARK=true yarn test --single-run",
-    "stats": "cloc . --exclude-dir=node_modules,tmp,.git"
+    "stats": "cloc . --exclude-dir=node_modules,tmp,.git",
+    "typescript:check": "tsc --noEmit"
   },
   "husky": {
     "hooks": {
@@ -53,13 +54,13 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-typescript": "^7.10.4",
     "@date-fns/date-fns-scripts": "^0.0.3",
-    "@types/jest": "^26.0.13",
+    "@types/jest": "26.0.20",
     "@types/mocha": "^8.2.1",
-    "@types/node": "^14.6.3",
-    "@types/power-assert": "^1.5.3",
-    "@types/sinon": "^9.0.6",
-    "@typescript-eslint/eslint-plugin": "^2.9.0",
-    "@typescript-eslint/parser": "^2.9.0",
+    "@types/node": "14.14.31",
+    "@types/power-assert": "1.5.3",
+    "@types/sinon": "9.0.10",
+    "@typescript-eslint/eslint-plugin": "4.15.2",
+    "@typescript-eslint/parser": "4.15.2",
     "babel-eslint": "^10.0.2",
     "babel-loader": "8.0.6",
     "babel-plugin-add-import-extension": "^1.4.3",
@@ -67,8 +68,8 @@
     "babel-preset-power-assert": "^3.0.0",
     "cloc": "^2.2.0",
     "coveralls": "^3.0.6",
-    "eslint": "^5.16.0",
-    "eslint-config-prettier": "^4.3.0",
+    "eslint": "7.20.0",
+    "eslint-config-prettier": "8.1.0",
     "firebase": "^3.7.1",
     "flow-bin": "0.84.0",
     "fs-promise": "^1.0.0",
@@ -107,10 +108,14 @@
     "sinon": "^7.4.1",
     "size-limit": "^0.21.0",
     "snazzy": "^7.0.0",
-    "typescript": "^4.0.2",
+    "typescript": "4.1.5",
     "webpack": "4",
     "webpack-cli": "^3.1.2",
     "world-countries": "^1.8.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
   },
   "resolutions": {
     "ajv": "6.8.1"
