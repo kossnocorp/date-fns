@@ -7,7 +7,7 @@ const defaultFormat = [
   'days',
   'hours',
   'minutes',
-  'seconds'
+  'seconds',
 ]
 
 /**
@@ -65,7 +65,7 @@ const defaultFormat = [
  * // Customize the zeros presence
  * formatDuration({ years: 0, months: 9 })
  * //=> '9 months'
- * formatDuration({ years: 0, months: 9 }, null, { zero: true })
+ * formatDuration({ years: 0, months: 9 }, { zero: true })
  * //=> '0 years 9 months'
  *
  * @example
@@ -87,7 +87,7 @@ export default function formatDuration(duration, options = {}) {
 
   const result = format
     .reduce((acc, unit) => {
-      const token = `x${unit.replace(/(^.)/, m => m.toUpperCase())}`
+      const token = `x${unit.replace(/(^.)/, (m) => m.toUpperCase())}`
       const addChunk =
         typeof duration[unit] === 'number' && (zero || duration[unit])
       return addChunk
