@@ -293,6 +293,23 @@ describe('format', function() {
       })
     })
 
+    describe('local week of the month', function() {
+      it('works as expected', function() {
+        var date = new Date(2019, 0, 1)
+        var result = format(date, 'W Wo WW')
+        assert(result === '1 1st 01')
+      })
+
+      it('allows to specify `weekStartsOn` and `firstWeekContainsDate` in options', function() {
+        var date = new Date(1986, 3 /* Apr */, 6)
+        var result = format(date, 'W Wo WW', {
+          weekStartsOn: 0,
+          firstWeekContainsDate: 4
+        })
+        assert(result === '2 2nd 02')
+      })
+    })
+
     it('ISO week of year', function() {
       var date = new Date(1986, 3 /* Apr */, 6)
       var result = format(date, 'I Io II')

@@ -5,6 +5,7 @@ import getUTCISOWeekYear from '../../../_lib/getUTCISOWeekYear/index'
 import getUTCWeek from '../../../_lib/getUTCWeek/index'
 import getUTCWeekYear from '../../../_lib/getUTCWeekYear/index'
 import addLeadingZeros from '../../addLeadingZeros/index'
+import getUTCWeekOfMonth from '../../../_lib/getUTCWeekOfMonth/index'
 
 var dayPeriodEnum = {
   am: 'am',
@@ -273,6 +274,17 @@ var formatters = {
     }
 
     return addLeadingZeros(week, token.length)
+  },
+
+  // Week of the month
+  W: function(date, token, localize, options) {
+    var isoWeek = getUTCWeekOfMonth(date, options)
+
+    if (token === 'Wo') {
+      return localize.ordinalNumber(isoWeek, { unit: 'week' })
+    }
+
+    return addLeadingZeros(isoWeek, token.length)
   },
 
   // ISO week of year
