@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'assert'
@@ -169,7 +168,7 @@ describe('formatDistanceToNow', () => {
     it('`options.includeSeconds`', () => {
       const result = formatDistanceToNow(
         new Date(1986, 3, 4, 10, 31, 52),
-        // $ExpectedMistake
+        // @ts-expect-error
         { includeSeconds: 1 }
       )
       assert(result === 'less than 10 seconds')
@@ -178,7 +177,7 @@ describe('formatDistanceToNow', () => {
     it('`options.addSuffix`', () => {
       const result = formatDistanceToNow(
         new Date(1986, 3, 4, 11, 32, 0),
-        // $ExpectedMistake
+        // @ts-expect-error
         { addSuffix: 1 }
       )
       assert(result === 'in about 1 hour')
@@ -201,7 +200,6 @@ describe('formatDistanceToNow', () => {
 
       const result = formatDistanceToNow(new Date(1986, 3, 4, 11, 32, 0), {
         addSuffix: true,
-        // $ExpectedMistake
         locale: customLocale,
       })
 
@@ -213,7 +211,6 @@ describe('formatDistanceToNow', () => {
         const customLocale = {}
         const block = formatDistanceToNow.bind(
           null,
-          // $ExpectedMistake
           new Date(1986, 3, 4, 10, 32, 0),
           { includeSeconds: true, locale: customLocale }
         )
@@ -227,6 +224,7 @@ describe('formatDistanceToNow', () => {
   })
 
   it('throws TypeError exception if passed less than 1 argument', () => {
+    // @ts-expect-error
     assert.throws(formatDistanceToNow.bind(null), TypeError)
   })
 })
