@@ -1,4 +1,5 @@
 import formatDistanceStrict from '../formatDistanceStrict/index'
+import { LocaleOptions } from 'src/types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
@@ -75,8 +76,15 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * )
  * //=> '1 jaro'
  */
-export default function formatDistanceToNowStrict(dirtyDate, dirtyOptions) {
+export default function formatDistanceToNowStrict(
+  dirtyDate: Date | number,
+  options: LocaleOptions & {
+    addSuffix?: boolean,
+    unit?: 'second' | 'minute' | 'hour' | 'day' | 'month' | 'year',
+    roundingMethod?: 'floor' | 'ceil' | 'round',
+  } = {}
+): string {
   requiredArgs(1, arguments)
 
-  return formatDistanceStrict(dirtyDate, Date.now(), dirtyOptions)
+  return formatDistanceStrict(dirtyDate, Date.now(), options)
 }

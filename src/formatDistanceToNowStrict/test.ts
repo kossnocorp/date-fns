@@ -1,4 +1,3 @@
-// @flow
 /* eslint-env mocha */
 
 import assert from 'power-assert'
@@ -317,7 +316,7 @@ describe('formatDistanceToNowStrict', function () {
 
       var result = formatDistanceToNowStrict(
         new Date(1986, 3, 4, 10, 32, 0),
-        // $ExpectedMistake
+        // @ts-expect-error
         { unit: unit }
       )
       assert(result === '0 years')
@@ -326,7 +325,7 @@ describe('formatDistanceToNowStrict', function () {
     it('`options.addSuffix`', function () {
       var result = formatDistanceToNowStrict(
         new Date(1986, 3, 4, 10, 31, 35),
-        // $ExpectedMistake
+        // @ts-expect-error
         { addSuffix: 1 }
       )
       assert(result === '25 seconds ago')
@@ -338,7 +337,7 @@ describe('formatDistanceToNowStrict', function () {
 
       var result = formatDistanceToNowStrict(
         new Date(1986, 3, 4, 10, 33, 1),
-        // $ExpectedMistake
+        // @ts-expect-error
         { roundingMethod: roundingMethod }
       )
       assert(result === '2 minutes')
@@ -361,7 +360,6 @@ describe('formatDistanceToNowStrict', function () {
 
       var result = formatDistanceToNowStrict(
         new Date(1986, 3, 4, 10, 31, 45),
-        // $ExpectedMistake
         { addSuffix: true, locale: customLocale }
       )
 
@@ -373,7 +371,6 @@ describe('formatDistanceToNowStrict', function () {
         var customLocale = {}
         var block = formatDistanceToNowStrict.bind(
           null,
-          // $ExpectedMistake
           new Date(1986, 3, 4, 10, 37, 0),
           { unit: 'minute', locale: customLocale }
         )
@@ -397,20 +394,20 @@ describe('formatDistanceToNowStrict', function () {
   })
 
   it("throws `RangeError` if `options.roundingMethod` is not 'floor', 'ceil', 'round' or undefined", function () {
+    // @ts-expect-error
     var block = formatDistanceToNowStrict.bind(
       null,
       new Date(1986, 3, 4, 10, 33, 29),
-      // $ExpectedMistake
       { roundingMethod: 'foobar' }
     )
     assert.throws(block, RangeError)
   })
 
   it("throws `RangeError` if `options.unit` is not 's', 'm', 'h', 'd', 'M', 'Y' or undefined", function () {
+    // @ts-expect-error
     var block = formatDistanceToNowStrict.bind(
       null,
       new Date(1986, 3, 4, 10, 33, 29),
-      // $ExpectedMistake
       { unit: 'foobar' }
     )
     assert.throws(block, RangeError)
