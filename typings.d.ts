@@ -75,6 +75,9 @@ type Duration = {
 }
 type DurationAliased = Duration
 
+type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6
+type DayAliased = Day
+
 // Exported Type Aliases
 
 declare module 'date-fns' {
@@ -83,6 +86,8 @@ declare module 'date-fns' {
   export type Locale = LocaleAliased
 
   export type Duration = DurationAliased
+
+  export type Day = DayAliased
 }
 
 // Regular Functions
@@ -579,6 +584,29 @@ declare module 'date-fns' {
   function intervalToDuration(interval: Interval): Duration
   namespace intervalToDuration {}
 
+  function intlFormat(
+    argument: Date | number,
+    formatOptions?: {
+      localeMatcher?: 'lookup' | 'best fit'
+      weekday?: 'narrow' | 'short' | 'long'
+      era?: 'narrow' | 'short' | 'long'
+      year?: 'numeric' | '2-digit'
+      month?: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long'
+      day?: 'numeric' | '2-digit'
+      hour?: 'numeric' | '2-digit'
+      minute?: 'numeric' | '2-digit'
+      second?: 'numeric' | '2-digit'
+      timeZoneName?: 'short' | 'long'
+      formatMatcher?: 'basic' | 'best fit'
+      hour12?: boolean
+      timeZone?: string
+    },
+    localeOptions?: {
+      locale?: string | string[]
+    }
+  ): string
+  namespace intlFormat {}
+
   function isAfter(date: Date | number, dateToCompare: Date | number): boolean
   namespace isAfter {}
 
@@ -795,6 +823,30 @@ declare module 'date-fns' {
 
   function min(datesArray: (Date | number)[]): Date
   namespace min {}
+
+  function nextDay(date: Date | number, day: Day): Date
+  namespace nextDay {}
+
+  function nextFriday(date: Date | number): Date
+  namespace nextFriday {}
+
+  function nextMonday(date: Date | number): Date
+  namespace nextMonday {}
+
+  function nextSaturday(date: Date | number): Date
+  namespace nextSaturday {}
+
+  function nextSunday(date: Date | number): Date
+  namespace nextSunday {}
+
+  function nextThursday(date: Date | number): Date
+  namespace nextThursday {}
+
+  function nextTuesday(date: Date | number): Date
+  namespace nextTuesday {}
+
+  function nextWednesday(date: Date | number): Date
+  namespace nextWednesday {}
 
   function parse(
     dateString: string,
@@ -1493,6 +1545,11 @@ declare module 'date-fns/intervalToDuration' {
   export default intervalToDuration
 }
 
+declare module 'date-fns/intlFormat' {
+  import { intlFormat } from 'date-fns'
+  export default intlFormat
+}
+
 declare module 'date-fns/isAfter' {
   import { isAfter } from 'date-fns'
   export default isAfter
@@ -1756,6 +1813,46 @@ declare module 'date-fns/milliseconds' {
 declare module 'date-fns/min' {
   import { min } from 'date-fns'
   export default min
+}
+
+declare module 'date-fns/nextDay' {
+  import { nextDay } from 'date-fns'
+  export default nextDay
+}
+
+declare module 'date-fns/nextFriday' {
+  import { nextFriday } from 'date-fns'
+  export default nextFriday
+}
+
+declare module 'date-fns/nextMonday' {
+  import { nextMonday } from 'date-fns'
+  export default nextMonday
+}
+
+declare module 'date-fns/nextSaturday' {
+  import { nextSaturday } from 'date-fns'
+  export default nextSaturday
+}
+
+declare module 'date-fns/nextSunday' {
+  import { nextSunday } from 'date-fns'
+  export default nextSunday
+}
+
+declare module 'date-fns/nextThursday' {
+  import { nextThursday } from 'date-fns'
+  export default nextThursday
+}
+
+declare module 'date-fns/nextTuesday' {
+  import { nextTuesday } from 'date-fns'
+  export default nextTuesday
+}
+
+declare module 'date-fns/nextWednesday' {
+  import { nextWednesday } from 'date-fns'
+  export default nextWednesday
 }
 
 declare module 'date-fns/parse' {
@@ -2478,6 +2575,11 @@ declare module 'date-fns/intervalToDuration/index' {
   export default intervalToDuration
 }
 
+declare module 'date-fns/intlFormat/index' {
+  import { intlFormat } from 'date-fns'
+  export default intlFormat
+}
+
 declare module 'date-fns/isAfter/index' {
   import { isAfter } from 'date-fns'
   export default isAfter
@@ -2741,6 +2843,46 @@ declare module 'date-fns/milliseconds/index' {
 declare module 'date-fns/min/index' {
   import { min } from 'date-fns'
   export default min
+}
+
+declare module 'date-fns/nextDay/index' {
+  import { nextDay } from 'date-fns'
+  export default nextDay
+}
+
+declare module 'date-fns/nextFriday/index' {
+  import { nextFriday } from 'date-fns'
+  export default nextFriday
+}
+
+declare module 'date-fns/nextMonday/index' {
+  import { nextMonday } from 'date-fns'
+  export default nextMonday
+}
+
+declare module 'date-fns/nextSaturday/index' {
+  import { nextSaturday } from 'date-fns'
+  export default nextSaturday
+}
+
+declare module 'date-fns/nextSunday/index' {
+  import { nextSunday } from 'date-fns'
+  export default nextSunday
+}
+
+declare module 'date-fns/nextThursday/index' {
+  import { nextThursday } from 'date-fns'
+  export default nextThursday
+}
+
+declare module 'date-fns/nextTuesday/index' {
+  import { nextTuesday } from 'date-fns'
+  export default nextTuesday
+}
+
+declare module 'date-fns/nextWednesday/index' {
+  import { nextWednesday } from 'date-fns'
+  export default nextWednesday
 }
 
 declare module 'date-fns/parse/index' {
@@ -3463,6 +3605,11 @@ declare module 'date-fns/intervalToDuration/index.js' {
   export default intervalToDuration
 }
 
+declare module 'date-fns/intlFormat/index.js' {
+  import { intlFormat } from 'date-fns'
+  export default intlFormat
+}
+
 declare module 'date-fns/isAfter/index.js' {
   import { isAfter } from 'date-fns'
   export default isAfter
@@ -3726,6 +3873,46 @@ declare module 'date-fns/milliseconds/index.js' {
 declare module 'date-fns/min/index.js' {
   import { min } from 'date-fns'
   export default min
+}
+
+declare module 'date-fns/nextDay/index.js' {
+  import { nextDay } from 'date-fns'
+  export default nextDay
+}
+
+declare module 'date-fns/nextFriday/index.js' {
+  import { nextFriday } from 'date-fns'
+  export default nextFriday
+}
+
+declare module 'date-fns/nextMonday/index.js' {
+  import { nextMonday } from 'date-fns'
+  export default nextMonday
+}
+
+declare module 'date-fns/nextSaturday/index.js' {
+  import { nextSaturday } from 'date-fns'
+  export default nextSaturday
+}
+
+declare module 'date-fns/nextSunday/index.js' {
+  import { nextSunday } from 'date-fns'
+  export default nextSunday
+}
+
+declare module 'date-fns/nextThursday/index.js' {
+  import { nextThursday } from 'date-fns'
+  export default nextThursday
+}
+
+declare module 'date-fns/nextTuesday/index.js' {
+  import { nextTuesday } from 'date-fns'
+  export default nextTuesday
+}
+
+declare module 'date-fns/nextWednesday/index.js' {
+  import { nextWednesday } from 'date-fns'
+  export default nextWednesday
 }
 
 declare module 'date-fns/parse/index.js' {
@@ -4485,6 +4672,30 @@ declare module 'date-fns/fp' {
   const intervalToDuration: CurriedFn1<Interval, Duration>
   namespace intervalToDuration {}
 
+  const intlFormat: CurriedFn3<
+    {
+      locale?: string | string[]
+    },
+    {
+      timeZone?: string
+      hour12?: boolean
+      formatMatcher?: 'basic' | 'best fit'
+      timeZoneName?: 'short' | 'long'
+      second?: 'numeric' | '2-digit'
+      minute?: 'numeric' | '2-digit'
+      hour?: 'numeric' | '2-digit'
+      day?: 'numeric' | '2-digit'
+      month?: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long'
+      year?: 'numeric' | '2-digit'
+      era?: 'narrow' | 'short' | 'long'
+      weekday?: 'narrow' | 'short' | 'long'
+      localeMatcher?: 'lookup' | 'best fit'
+    },
+    Date | number,
+    string
+  >
+  namespace intlFormat {}
+
   const isAfter: CurriedFn2<Date | number, Date | number, boolean>
   namespace isAfter {}
 
@@ -4648,6 +4859,30 @@ declare module 'date-fns/fp' {
 
   const min: CurriedFn1<(Date | number)[], Date>
   namespace min {}
+
+  const nextDay: CurriedFn2<Day, Date | number, Date>
+  namespace nextDay {}
+
+  const nextFriday: CurriedFn1<Date | number, Date>
+  namespace nextFriday {}
+
+  const nextMonday: CurriedFn1<Date | number, Date>
+  namespace nextMonday {}
+
+  const nextSaturday: CurriedFn1<Date | number, Date>
+  namespace nextSaturday {}
+
+  const nextSunday: CurriedFn1<Date | number, Date>
+  namespace nextSunday {}
+
+  const nextThursday: CurriedFn1<Date | number, Date>
+  namespace nextThursday {}
+
+  const nextTuesday: CurriedFn1<Date | number, Date>
+  namespace nextTuesday {}
+
+  const nextWednesday: CurriedFn1<Date | number, Date>
+  namespace nextWednesday {}
 
   const parse: CurriedFn3<Date | number, string, string, Date>
   namespace parse {}
@@ -5440,6 +5675,11 @@ declare module 'date-fns/fp/intervalToDuration' {
   export default intervalToDuration
 }
 
+declare module 'date-fns/fp/intlFormat' {
+  import { intlFormat } from 'date-fns/fp'
+  export default intlFormat
+}
+
 declare module 'date-fns/fp/isAfter' {
   import { isAfter } from 'date-fns/fp'
   export default isAfter
@@ -5658,6 +5898,46 @@ declare module 'date-fns/fp/milliseconds' {
 declare module 'date-fns/fp/min' {
   import { min } from 'date-fns/fp'
   export default min
+}
+
+declare module 'date-fns/fp/nextDay' {
+  import { nextDay } from 'date-fns/fp'
+  export default nextDay
+}
+
+declare module 'date-fns/fp/nextFriday' {
+  import { nextFriday } from 'date-fns/fp'
+  export default nextFriday
+}
+
+declare module 'date-fns/fp/nextMonday' {
+  import { nextMonday } from 'date-fns/fp'
+  export default nextMonday
+}
+
+declare module 'date-fns/fp/nextSaturday' {
+  import { nextSaturday } from 'date-fns/fp'
+  export default nextSaturday
+}
+
+declare module 'date-fns/fp/nextSunday' {
+  import { nextSunday } from 'date-fns/fp'
+  export default nextSunday
+}
+
+declare module 'date-fns/fp/nextThursday' {
+  import { nextThursday } from 'date-fns/fp'
+  export default nextThursday
+}
+
+declare module 'date-fns/fp/nextTuesday' {
+  import { nextTuesday } from 'date-fns/fp'
+  export default nextTuesday
+}
+
+declare module 'date-fns/fp/nextWednesday' {
+  import { nextWednesday } from 'date-fns/fp'
+  export default nextWednesday
 }
 
 declare module 'date-fns/fp/parse' {
@@ -6475,6 +6755,11 @@ declare module 'date-fns/fp/intervalToDuration/index' {
   export default intervalToDuration
 }
 
+declare module 'date-fns/fp/intlFormat/index' {
+  import { intlFormat } from 'date-fns/fp'
+  export default intlFormat
+}
+
 declare module 'date-fns/fp/isAfter/index' {
   import { isAfter } from 'date-fns/fp'
   export default isAfter
@@ -6693,6 +6978,46 @@ declare module 'date-fns/fp/milliseconds/index' {
 declare module 'date-fns/fp/min/index' {
   import { min } from 'date-fns/fp'
   export default min
+}
+
+declare module 'date-fns/fp/nextDay/index' {
+  import { nextDay } from 'date-fns/fp'
+  export default nextDay
+}
+
+declare module 'date-fns/fp/nextFriday/index' {
+  import { nextFriday } from 'date-fns/fp'
+  export default nextFriday
+}
+
+declare module 'date-fns/fp/nextMonday/index' {
+  import { nextMonday } from 'date-fns/fp'
+  export default nextMonday
+}
+
+declare module 'date-fns/fp/nextSaturday/index' {
+  import { nextSaturday } from 'date-fns/fp'
+  export default nextSaturday
+}
+
+declare module 'date-fns/fp/nextSunday/index' {
+  import { nextSunday } from 'date-fns/fp'
+  export default nextSunday
+}
+
+declare module 'date-fns/fp/nextThursday/index' {
+  import { nextThursday } from 'date-fns/fp'
+  export default nextThursday
+}
+
+declare module 'date-fns/fp/nextTuesday/index' {
+  import { nextTuesday } from 'date-fns/fp'
+  export default nextTuesday
+}
+
+declare module 'date-fns/fp/nextWednesday/index' {
+  import { nextWednesday } from 'date-fns/fp'
+  export default nextWednesday
 }
 
 declare module 'date-fns/fp/parse/index' {
@@ -7510,6 +7835,11 @@ declare module 'date-fns/fp/intervalToDuration/index.js' {
   export default intervalToDuration
 }
 
+declare module 'date-fns/fp/intlFormat/index.js' {
+  import { intlFormat } from 'date-fns/fp'
+  export default intlFormat
+}
+
 declare module 'date-fns/fp/isAfter/index.js' {
   import { isAfter } from 'date-fns/fp'
   export default isAfter
@@ -7728,6 +8058,46 @@ declare module 'date-fns/fp/milliseconds/index.js' {
 declare module 'date-fns/fp/min/index.js' {
   import { min } from 'date-fns/fp'
   export default min
+}
+
+declare module 'date-fns/fp/nextDay/index.js' {
+  import { nextDay } from 'date-fns/fp'
+  export default nextDay
+}
+
+declare module 'date-fns/fp/nextFriday/index.js' {
+  import { nextFriday } from 'date-fns/fp'
+  export default nextFriday
+}
+
+declare module 'date-fns/fp/nextMonday/index.js' {
+  import { nextMonday } from 'date-fns/fp'
+  export default nextMonday
+}
+
+declare module 'date-fns/fp/nextSaturday/index.js' {
+  import { nextSaturday } from 'date-fns/fp'
+  export default nextSaturday
+}
+
+declare module 'date-fns/fp/nextSunday/index.js' {
+  import { nextSunday } from 'date-fns/fp'
+  export default nextSunday
+}
+
+declare module 'date-fns/fp/nextThursday/index.js' {
+  import { nextThursday } from 'date-fns/fp'
+  export default nextThursday
+}
+
+declare module 'date-fns/fp/nextTuesday/index.js' {
+  import { nextTuesday } from 'date-fns/fp'
+  export default nextTuesday
+}
+
+declare module 'date-fns/fp/nextWednesday/index.js' {
+  import { nextWednesday } from 'date-fns/fp'
+  export default nextWednesday
 }
 
 declare module 'date-fns/fp/parse/index.js' {
@@ -8489,6 +8859,29 @@ declare module 'date-fns/esm' {
   function intervalToDuration(interval: Interval): Duration
   namespace intervalToDuration {}
 
+  function intlFormat(
+    argument: Date | number,
+    formatOptions?: {
+      localeMatcher?: 'lookup' | 'best fit'
+      weekday?: 'narrow' | 'short' | 'long'
+      era?: 'narrow' | 'short' | 'long'
+      year?: 'numeric' | '2-digit'
+      month?: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long'
+      day?: 'numeric' | '2-digit'
+      hour?: 'numeric' | '2-digit'
+      minute?: 'numeric' | '2-digit'
+      second?: 'numeric' | '2-digit'
+      timeZoneName?: 'short' | 'long'
+      formatMatcher?: 'basic' | 'best fit'
+      hour12?: boolean
+      timeZone?: string
+    },
+    localeOptions?: {
+      locale?: string | string[]
+    }
+  ): string
+  namespace intlFormat {}
+
   function isAfter(date: Date | number, dateToCompare: Date | number): boolean
   namespace isAfter {}
 
@@ -8705,6 +9098,30 @@ declare module 'date-fns/esm' {
 
   function min(datesArray: (Date | number)[]): Date
   namespace min {}
+
+  function nextDay(date: Date | number, day: Day): Date
+  namespace nextDay {}
+
+  function nextFriday(date: Date | number): Date
+  namespace nextFriday {}
+
+  function nextMonday(date: Date | number): Date
+  namespace nextMonday {}
+
+  function nextSaturday(date: Date | number): Date
+  namespace nextSaturday {}
+
+  function nextSunday(date: Date | number): Date
+  namespace nextSunday {}
+
+  function nextThursday(date: Date | number): Date
+  namespace nextThursday {}
+
+  function nextTuesday(date: Date | number): Date
+  namespace nextTuesday {}
+
+  function nextWednesday(date: Date | number): Date
+  namespace nextWednesday {}
 
   function parse(
     dateString: string,
@@ -9403,6 +9820,11 @@ declare module 'date-fns/esm/intervalToDuration' {
   export default intervalToDuration
 }
 
+declare module 'date-fns/esm/intlFormat' {
+  import { intlFormat } from 'date-fns/esm'
+  export default intlFormat
+}
+
 declare module 'date-fns/esm/isAfter' {
   import { isAfter } from 'date-fns/esm'
   export default isAfter
@@ -9666,6 +10088,46 @@ declare module 'date-fns/esm/milliseconds' {
 declare module 'date-fns/esm/min' {
   import { min } from 'date-fns/esm'
   export default min
+}
+
+declare module 'date-fns/esm/nextDay' {
+  import { nextDay } from 'date-fns/esm'
+  export default nextDay
+}
+
+declare module 'date-fns/esm/nextFriday' {
+  import { nextFriday } from 'date-fns/esm'
+  export default nextFriday
+}
+
+declare module 'date-fns/esm/nextMonday' {
+  import { nextMonday } from 'date-fns/esm'
+  export default nextMonday
+}
+
+declare module 'date-fns/esm/nextSaturday' {
+  import { nextSaturday } from 'date-fns/esm'
+  export default nextSaturday
+}
+
+declare module 'date-fns/esm/nextSunday' {
+  import { nextSunday } from 'date-fns/esm'
+  export default nextSunday
+}
+
+declare module 'date-fns/esm/nextThursday' {
+  import { nextThursday } from 'date-fns/esm'
+  export default nextThursday
+}
+
+declare module 'date-fns/esm/nextTuesday' {
+  import { nextTuesday } from 'date-fns/esm'
+  export default nextTuesday
+}
+
+declare module 'date-fns/esm/nextWednesday' {
+  import { nextWednesday } from 'date-fns/esm'
+  export default nextWednesday
 }
 
 declare module 'date-fns/esm/parse' {
@@ -10388,6 +10850,11 @@ declare module 'date-fns/esm/intervalToDuration/index' {
   export default intervalToDuration
 }
 
+declare module 'date-fns/esm/intlFormat/index' {
+  import { intlFormat } from 'date-fns/esm'
+  export default intlFormat
+}
+
 declare module 'date-fns/esm/isAfter/index' {
   import { isAfter } from 'date-fns/esm'
   export default isAfter
@@ -10651,6 +11118,46 @@ declare module 'date-fns/esm/milliseconds/index' {
 declare module 'date-fns/esm/min/index' {
   import { min } from 'date-fns/esm'
   export default min
+}
+
+declare module 'date-fns/esm/nextDay/index' {
+  import { nextDay } from 'date-fns/esm'
+  export default nextDay
+}
+
+declare module 'date-fns/esm/nextFriday/index' {
+  import { nextFriday } from 'date-fns/esm'
+  export default nextFriday
+}
+
+declare module 'date-fns/esm/nextMonday/index' {
+  import { nextMonday } from 'date-fns/esm'
+  export default nextMonday
+}
+
+declare module 'date-fns/esm/nextSaturday/index' {
+  import { nextSaturday } from 'date-fns/esm'
+  export default nextSaturday
+}
+
+declare module 'date-fns/esm/nextSunday/index' {
+  import { nextSunday } from 'date-fns/esm'
+  export default nextSunday
+}
+
+declare module 'date-fns/esm/nextThursday/index' {
+  import { nextThursday } from 'date-fns/esm'
+  export default nextThursday
+}
+
+declare module 'date-fns/esm/nextTuesday/index' {
+  import { nextTuesday } from 'date-fns/esm'
+  export default nextTuesday
+}
+
+declare module 'date-fns/esm/nextWednesday/index' {
+  import { nextWednesday } from 'date-fns/esm'
+  export default nextWednesday
 }
 
 declare module 'date-fns/esm/parse/index' {
@@ -11373,6 +11880,11 @@ declare module 'date-fns/esm/intervalToDuration/index.js' {
   export default intervalToDuration
 }
 
+declare module 'date-fns/esm/intlFormat/index.js' {
+  import { intlFormat } from 'date-fns/esm'
+  export default intlFormat
+}
+
 declare module 'date-fns/esm/isAfter/index.js' {
   import { isAfter } from 'date-fns/esm'
   export default isAfter
@@ -11636,6 +12148,46 @@ declare module 'date-fns/esm/milliseconds/index.js' {
 declare module 'date-fns/esm/min/index.js' {
   import { min } from 'date-fns/esm'
   export default min
+}
+
+declare module 'date-fns/esm/nextDay/index.js' {
+  import { nextDay } from 'date-fns/esm'
+  export default nextDay
+}
+
+declare module 'date-fns/esm/nextFriday/index.js' {
+  import { nextFriday } from 'date-fns/esm'
+  export default nextFriday
+}
+
+declare module 'date-fns/esm/nextMonday/index.js' {
+  import { nextMonday } from 'date-fns/esm'
+  export default nextMonday
+}
+
+declare module 'date-fns/esm/nextSaturday/index.js' {
+  import { nextSaturday } from 'date-fns/esm'
+  export default nextSaturday
+}
+
+declare module 'date-fns/esm/nextSunday/index.js' {
+  import { nextSunday } from 'date-fns/esm'
+  export default nextSunday
+}
+
+declare module 'date-fns/esm/nextThursday/index.js' {
+  import { nextThursday } from 'date-fns/esm'
+  export default nextThursday
+}
+
+declare module 'date-fns/esm/nextTuesday/index.js' {
+  import { nextTuesday } from 'date-fns/esm'
+  export default nextTuesday
+}
+
+declare module 'date-fns/esm/nextWednesday/index.js' {
+  import { nextWednesday } from 'date-fns/esm'
+  export default nextWednesday
 }
 
 declare module 'date-fns/esm/parse/index.js' {
@@ -12395,6 +12947,30 @@ declare module 'date-fns/esm/fp' {
   const intervalToDuration: CurriedFn1<Interval, Duration>
   namespace intervalToDuration {}
 
+  const intlFormat: CurriedFn3<
+    {
+      locale?: string | string[]
+    },
+    {
+      timeZone?: string
+      hour12?: boolean
+      formatMatcher?: 'basic' | 'best fit'
+      timeZoneName?: 'short' | 'long'
+      second?: 'numeric' | '2-digit'
+      minute?: 'numeric' | '2-digit'
+      hour?: 'numeric' | '2-digit'
+      day?: 'numeric' | '2-digit'
+      month?: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long'
+      year?: 'numeric' | '2-digit'
+      era?: 'narrow' | 'short' | 'long'
+      weekday?: 'narrow' | 'short' | 'long'
+      localeMatcher?: 'lookup' | 'best fit'
+    },
+    Date | number,
+    string
+  >
+  namespace intlFormat {}
+
   const isAfter: CurriedFn2<Date | number, Date | number, boolean>
   namespace isAfter {}
 
@@ -12558,6 +13134,30 @@ declare module 'date-fns/esm/fp' {
 
   const min: CurriedFn1<(Date | number)[], Date>
   namespace min {}
+
+  const nextDay: CurriedFn2<Day, Date | number, Date>
+  namespace nextDay {}
+
+  const nextFriday: CurriedFn1<Date | number, Date>
+  namespace nextFriday {}
+
+  const nextMonday: CurriedFn1<Date | number, Date>
+  namespace nextMonday {}
+
+  const nextSaturday: CurriedFn1<Date | number, Date>
+  namespace nextSaturday {}
+
+  const nextSunday: CurriedFn1<Date | number, Date>
+  namespace nextSunday {}
+
+  const nextThursday: CurriedFn1<Date | number, Date>
+  namespace nextThursday {}
+
+  const nextTuesday: CurriedFn1<Date | number, Date>
+  namespace nextTuesday {}
+
+  const nextWednesday: CurriedFn1<Date | number, Date>
+  namespace nextWednesday {}
 
   const parse: CurriedFn3<Date | number, string, string, Date>
   namespace parse {}
@@ -13350,6 +13950,11 @@ declare module 'date-fns/esm/fp/intervalToDuration' {
   export default intervalToDuration
 }
 
+declare module 'date-fns/esm/fp/intlFormat' {
+  import { intlFormat } from 'date-fns/esm/fp'
+  export default intlFormat
+}
+
 declare module 'date-fns/esm/fp/isAfter' {
   import { isAfter } from 'date-fns/esm/fp'
   export default isAfter
@@ -13568,6 +14173,46 @@ declare module 'date-fns/esm/fp/milliseconds' {
 declare module 'date-fns/esm/fp/min' {
   import { min } from 'date-fns/esm/fp'
   export default min
+}
+
+declare module 'date-fns/esm/fp/nextDay' {
+  import { nextDay } from 'date-fns/esm/fp'
+  export default nextDay
+}
+
+declare module 'date-fns/esm/fp/nextFriday' {
+  import { nextFriday } from 'date-fns/esm/fp'
+  export default nextFriday
+}
+
+declare module 'date-fns/esm/fp/nextMonday' {
+  import { nextMonday } from 'date-fns/esm/fp'
+  export default nextMonday
+}
+
+declare module 'date-fns/esm/fp/nextSaturday' {
+  import { nextSaturday } from 'date-fns/esm/fp'
+  export default nextSaturday
+}
+
+declare module 'date-fns/esm/fp/nextSunday' {
+  import { nextSunday } from 'date-fns/esm/fp'
+  export default nextSunday
+}
+
+declare module 'date-fns/esm/fp/nextThursday' {
+  import { nextThursday } from 'date-fns/esm/fp'
+  export default nextThursday
+}
+
+declare module 'date-fns/esm/fp/nextTuesday' {
+  import { nextTuesday } from 'date-fns/esm/fp'
+  export default nextTuesday
+}
+
+declare module 'date-fns/esm/fp/nextWednesday' {
+  import { nextWednesday } from 'date-fns/esm/fp'
+  export default nextWednesday
 }
 
 declare module 'date-fns/esm/fp/parse' {
@@ -14385,6 +15030,11 @@ declare module 'date-fns/esm/fp/intervalToDuration/index' {
   export default intervalToDuration
 }
 
+declare module 'date-fns/esm/fp/intlFormat/index' {
+  import { intlFormat } from 'date-fns/esm/fp'
+  export default intlFormat
+}
+
 declare module 'date-fns/esm/fp/isAfter/index' {
   import { isAfter } from 'date-fns/esm/fp'
   export default isAfter
@@ -14603,6 +15253,46 @@ declare module 'date-fns/esm/fp/milliseconds/index' {
 declare module 'date-fns/esm/fp/min/index' {
   import { min } from 'date-fns/esm/fp'
   export default min
+}
+
+declare module 'date-fns/esm/fp/nextDay/index' {
+  import { nextDay } from 'date-fns/esm/fp'
+  export default nextDay
+}
+
+declare module 'date-fns/esm/fp/nextFriday/index' {
+  import { nextFriday } from 'date-fns/esm/fp'
+  export default nextFriday
+}
+
+declare module 'date-fns/esm/fp/nextMonday/index' {
+  import { nextMonday } from 'date-fns/esm/fp'
+  export default nextMonday
+}
+
+declare module 'date-fns/esm/fp/nextSaturday/index' {
+  import { nextSaturday } from 'date-fns/esm/fp'
+  export default nextSaturday
+}
+
+declare module 'date-fns/esm/fp/nextSunday/index' {
+  import { nextSunday } from 'date-fns/esm/fp'
+  export default nextSunday
+}
+
+declare module 'date-fns/esm/fp/nextThursday/index' {
+  import { nextThursday } from 'date-fns/esm/fp'
+  export default nextThursday
+}
+
+declare module 'date-fns/esm/fp/nextTuesday/index' {
+  import { nextTuesday } from 'date-fns/esm/fp'
+  export default nextTuesday
+}
+
+declare module 'date-fns/esm/fp/nextWednesday/index' {
+  import { nextWednesday } from 'date-fns/esm/fp'
+  export default nextWednesday
 }
 
 declare module 'date-fns/esm/fp/parse/index' {
@@ -15420,6 +16110,11 @@ declare module 'date-fns/esm/fp/intervalToDuration/index.js' {
   export default intervalToDuration
 }
 
+declare module 'date-fns/esm/fp/intlFormat/index.js' {
+  import { intlFormat } from 'date-fns/esm/fp'
+  export default intlFormat
+}
+
 declare module 'date-fns/esm/fp/isAfter/index.js' {
   import { isAfter } from 'date-fns/esm/fp'
   export default isAfter
@@ -15638,6 +16333,46 @@ declare module 'date-fns/esm/fp/milliseconds/index.js' {
 declare module 'date-fns/esm/fp/min/index.js' {
   import { min } from 'date-fns/esm/fp'
   export default min
+}
+
+declare module 'date-fns/esm/fp/nextDay/index.js' {
+  import { nextDay } from 'date-fns/esm/fp'
+  export default nextDay
+}
+
+declare module 'date-fns/esm/fp/nextFriday/index.js' {
+  import { nextFriday } from 'date-fns/esm/fp'
+  export default nextFriday
+}
+
+declare module 'date-fns/esm/fp/nextMonday/index.js' {
+  import { nextMonday } from 'date-fns/esm/fp'
+  export default nextMonday
+}
+
+declare module 'date-fns/esm/fp/nextSaturday/index.js' {
+  import { nextSaturday } from 'date-fns/esm/fp'
+  export default nextSaturday
+}
+
+declare module 'date-fns/esm/fp/nextSunday/index.js' {
+  import { nextSunday } from 'date-fns/esm/fp'
+  export default nextSunday
+}
+
+declare module 'date-fns/esm/fp/nextThursday/index.js' {
+  import { nextThursday } from 'date-fns/esm/fp'
+  export default nextThursday
+}
+
+declare module 'date-fns/esm/fp/nextTuesday/index.js' {
+  import { nextTuesday } from 'date-fns/esm/fp'
+  export default nextTuesday
+}
+
+declare module 'date-fns/esm/fp/nextWednesday/index.js' {
+  import { nextWednesday } from 'date-fns/esm/fp'
+  export default nextWednesday
 }
 
 declare module 'date-fns/esm/fp/parse/index.js' {
@@ -19092,6 +19827,28 @@ interface dateFns {
 
   intervalToDuration(interval: Interval): Duration
 
+  intlFormat(
+    argument: Date | number,
+    formatOptions?: {
+      localeMatcher?: 'lookup' | 'best fit'
+      weekday?: 'narrow' | 'short' | 'long'
+      era?: 'narrow' | 'short' | 'long'
+      year?: 'numeric' | '2-digit'
+      month?: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long'
+      day?: 'numeric' | '2-digit'
+      hour?: 'numeric' | '2-digit'
+      minute?: 'numeric' | '2-digit'
+      second?: 'numeric' | '2-digit'
+      timeZoneName?: 'short' | 'long'
+      formatMatcher?: 'basic' | 'best fit'
+      hour12?: boolean
+      timeZone?: string
+    },
+    localeOptions?: {
+      locale?: string | string[]
+    }
+  ): string
+
   isAfter(date: Date | number, dateToCompare: Date | number): boolean
 
   isBefore(date: Date | number, dateToCompare: Date | number): boolean
@@ -19231,6 +19988,22 @@ interface dateFns {
   milliseconds(duration: Duration): number
 
   min(datesArray: (Date | number)[]): Date
+
+  nextDay(date: Date | number, day: Day): Date
+
+  nextFriday(date: Date | number): Date
+
+  nextMonday(date: Date | number): Date
+
+  nextSaturday(date: Date | number): Date
+
+  nextSunday(date: Date | number): Date
+
+  nextThursday(date: Date | number): Date
+
+  nextTuesday(date: Date | number): Date
+
+  nextWednesday(date: Date | number): Date
 
   parse(
     dateString: string,
