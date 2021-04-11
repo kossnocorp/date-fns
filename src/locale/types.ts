@@ -36,6 +36,12 @@ export type FormatDistanceFn = (
   }
 ) => string
 
+export type FormatRelativeTokenFn = (
+  date: Date | number,
+  baseDate: Date | number,
+  options?: { weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 }
+) => string
+
 export type FormatRelativeFn = (
   token: 'lastWeek' | 'yesterday' | 'today' | 'tomorrow' | 'nextWeek' | 'other',
   date: Date | number,
@@ -43,11 +49,24 @@ export type FormatRelativeFn = (
   options?: { weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6 }
 ) => string
 
+export type TimeUnit =
+  | 'year'
+  | 'quarter'
+  | 'month'
+  | 'week'
+  | 'date'
+  | 'dayOfYear'
+  | 'day'
+  | 'hour'
+  | 'minute'
+  | 'second'
+
 export type LocalizeFn<TValue> = (
   value: TValue,
   options?: {
     width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
     context?: 'formatting' | 'standalone'
+    unit?: TimeUnit
   }
 ) => string
 
@@ -84,7 +103,10 @@ export type MatchFn<TResult> = (
   options?: {
     width?: 'narrow' | 'short' | 'abbreviated' | 'wide'
   }
-) => TResult
+) => {
+  value: TResult
+  rest: string
+} | null
 
 export interface Match {
   ordinalNumber: MatchFn<number>
