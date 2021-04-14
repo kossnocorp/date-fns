@@ -186,7 +186,7 @@ describe('formatDistanceToNow', () => {
 
   describe('custom locale', () => {
     it('can be passed to the function', () => {
-      function localizeDistance(token, count, options) {
+      function localizeDistance(token: 'aboutXHours', count: 1, options: any) {
         assert(token === 'aboutXHours')
         assert(count === 1)
         assert(options.addSuffix === true)
@@ -200,6 +200,7 @@ describe('formatDistanceToNow', () => {
 
       const result = formatDistanceToNow(new Date(1986, 3, 4, 11, 32, 0), {
         addSuffix: true,
+        // @ts-expect-error
         locale: customLocale,
       })
 
@@ -209,6 +210,7 @@ describe('formatDistanceToNow', () => {
     describe('does not contain `distanceInWords` property', () => {
       it('throws `RangeError`', function () {
         const customLocale = {}
+        // @ts-expect-error
         const block = formatDistanceToNow.bind(
           null,
           new Date(1986, 3, 4, 10, 32, 0),

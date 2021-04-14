@@ -107,7 +107,10 @@ import { LocaleOptions } from '../types'
  * )
  * //=> 'pli ol 1 jaro'
  */
-export default function formatDistanceToNow(dirtyDate: Date | number, options: LocaleOptions & { includeSeconds?: boolean, addSuffix?: boolean } = {}) {
+export default function formatDistanceToNow(
+  dirtyDate: Date | number,
+  options: LocaleOptions & { includeSeconds?: boolean, addSuffix?: boolean } = {}
+): string {
   requiredArgs(1, arguments)
 
   return distanceInWords(dirtyDate, Date.now(), options)
