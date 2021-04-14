@@ -1,14 +1,5 @@
 import defaultLocale from '../locale/en-US/index'
-
-const defaultFormat = [
-  'years',
-  'months',
-  'weeks',
-  'days',
-  'hours',
-  'minutes',
-  'seconds'
-]
+import { Duration } from '../types'
 
 /**
  * @name formatDuration
@@ -73,7 +64,24 @@ const defaultFormat = [
  * formatDuration({ years: 2, months: 9, weeks: 3 }, { delimiter: ', ' })
  * //=> '2 years, 9 months, 3 weeks'
  */
-export default function formatDuration(duration, options = {}) {
+
+ const defaultFormat: (keyof Duration)[] = [
+  'years',
+  'months',
+  'weeks',
+  'days',
+  'hours',
+  'minutes',
+  'seconds'
+]
+interface Options {
+  format?: (keyof Duration)[]
+  zero?: boolean
+  delimiter?: string
+  locale?: Locale
+}
+
+export default function formatDuration(duration: Duration, options: Options = {}): string {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 argument required, but only ${arguments.length} present`
@@ -88,10 +96,9 @@ export default function formatDuration(duration, options = {}) {
   const result = format
     .reduce((acc, unit) => {
       const token = `x${unit.replace(/(^.)/, m => m.toUpperCase())}`
-      const addChunk =
-        typeof duration[unit] === 'number' && (zero || duration[unit])
-      return addChunk
-        ? acc.concat(locale.formatDistance(token, duration[unit]))
+      const addChunk = typeof duration[unit] === 'number' && (zero || duration[unit])
+      return addChunk && locale.formatDistance
+        ?  acc.concat(locale.formatDistance(token, duration[unit]))
         : acc
     }, [])
     .join(delimiter)
