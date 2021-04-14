@@ -35,7 +35,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  *
  * @example
  * // If today is 1 January 2015, what is the distance to 2 July 2014?
- * var result = formatDistanceToNowStrict(
+ * const result = formatDistanceToNowStrict(
  *   new Date(2014, 6, 2)
  * )
  * //=> '6 months'
@@ -43,7 +43,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @example
  * // If now is 1 January 2015 00:00:00,
  * // what is the distance to 1 January 2015 00:00:15, including seconds?
- * var result = formatDistanceToNowStrict(
+ * const result = formatDistanceToNowStrict(
  *   new Date(2015, 0, 1, 0, 0, 15)
  * )
  * //=> '20 seconds'
@@ -51,7 +51,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @example
  * // If today is 1 January 2015,
  * // what is the distance to 1 January 2016, with a suffix?
- * var result = formatDistanceToNowStrict(
+ * const result = formatDistanceToNowStrict(
  *   new Date(2016, 0, 1),
  *   {addSuffix: true}
  * )
@@ -60,7 +60,7 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @example
  * // If today is 28 January 2015,
  * // what is the distance to 1 January 2015, in months, rounded up??
- * var result = formatDistanceToNowStrict(new Date(2015, 0, 1), {
+ * const result = formatDistanceToNowStrict(new Date(2015, 0, 1), {
  *   unit: 'month',
  *   roundingMethod: 'ceil'
  * })
@@ -69,8 +69,8 @@ import requiredArgs from '../_lib/requiredArgs/index'
  * @example
  * // If today is 1 January 2015,
  * // what is the distance to 1 August 2016 in Esperanto?
- * var eoLocale = require('date-fns/locale/eo')
- * var result = formatDistanceToNowStrict(
+ * const eoLocale = require('date-fns/locale/eo')
+ * const result = formatDistanceToNowStrict(
  *   new Date(2016, 7, 1),
  *   {locale: eoLocale}
  * )
