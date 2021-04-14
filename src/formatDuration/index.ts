@@ -1,14 +1,5 @@
 import defaultLocale from '../locale/en-US/index'
-
-const defaultFormat: (keyof Duration)[] = [
-  'years',
-  'months',
-  'weeks',
-  'days',
-  'hours',
-  'minutes',
-  'seconds'
-]
+import { Duration } from '../types'
 
 /**
  * @name formatDuration
@@ -74,6 +65,15 @@ const defaultFormat: (keyof Duration)[] = [
  * //=> '2 years, 9 months, 3 weeks'
  */
 
+ const defaultFormat: (keyof Duration)[] = [
+  'years',
+  'months',
+  'weeks',
+  'days',
+  'hours',
+  'minutes',
+  'seconds'
+]
 interface Options {
   format?: (keyof Duration)[]
   zero?: boolean
@@ -81,7 +81,7 @@ interface Options {
   locale?: Locale
 }
 
-export default function formatDuration(duration: Duration, options: Options = {}) {
+export default function formatDuration(duration: Duration, options: Options = {}): string {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 argument required, but only ${arguments.length} present`
