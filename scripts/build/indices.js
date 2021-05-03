@@ -19,7 +19,7 @@ const outdatedLocales = require('../../outdatedLocales.json')
 const generatedAutomaticallyMessage =
   "// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it."
 
-listFns().then((fns) => {
+listFns().then(fns => {
   const fpFns = listFPFns()
   const locales = listLocales().filter(
     ({ code }) => !outdatedLocales.includes(code)
@@ -40,7 +40,7 @@ function writeFile(relativePath, content) {
 function generateIndex(files, isFP, includeConstants) {
   const fileLines = files
     .map(
-      (fn) =>
+      fn =>
         `export { default as ${fn.name} } from '${fn.path.replace(
           /\.js$/,
           ''

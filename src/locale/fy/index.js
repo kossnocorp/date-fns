@@ -7,13 +7,13 @@ import match from './_lib/match/index'
 /**
  * @type {Locale}
  * @category Locales
- * @summary Mongolian locale.
- * @language Mongolian
- * @iso-639-2 mon
- * @author Bilguun Ochirbat [@bilguun0203]{@link https://github.com/bilguun0203}
+ * @summary Western Frisian locale (Netherlands).
+ * @language West Frisian
+ * @iso-639-2 fry
+ * @author Damon Asberg [@damon02]{@link https://github.com/damon02}
  */
 var locale = {
-  code: 'mn',
+  code: 'fy',
   formatDistance: formatDistance,
   formatLong: formatLong,
   formatRelative: formatRelative,
@@ -21,8 +21,8 @@ var locale = {
   match: match,
   options: {
     weekStartsOn: 1 /* Monday */,
-    firstWeekContainsDate: 1,
-  },
+    firstWeekContainsDate: 4
+  }
 }
 
 export default locale
