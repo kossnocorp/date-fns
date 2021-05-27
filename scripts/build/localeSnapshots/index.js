@@ -15,6 +15,7 @@ import renderFormatDistance from './renderFormatDistance'
 import renderFormatDistanceStrict from './renderFormatDistanceStrict'
 import renderFormatParse from './renderFormatParse'
 import renderFormatRelative from './renderFormatRelative'
+import renderFormatDuration from './renderFormatDuration'
 
 const mode = process.argv[2] || 'generate'
 
@@ -29,7 +30,7 @@ const locales = listLocales().filter(
 )
 
 Promise.all(
-  locales.map(localeObj => {
+  locales.map((localeObj) => {
     const { code, fullPath } = localeObj
     const locale = require(`../../../src/locale/${code}`)
     const source = readFileSync(path.join(process.cwd(), fullPath)).toString()
@@ -44,6 +45,9 @@ ${renderFormatDistance(locale)}
 ${renderFormatDistanceStrict(locale)}
 
 ${renderFormatRelative(locale)}
+
+${renderFormatDuration(locale)}
+
 `
 
     const snapshotPath = path.join(
@@ -53,7 +57,7 @@ ${renderFormatRelative(locale)}
     const formattedSnapshot = prettier(snapshot, 'markdown')
 
     if (mode === 'test') {
-      return readFile(snapshotPath, 'utf8').then(snapshotFileContent => {
+      return readFile(snapshotPath, 'utf8').then((snapshotFileContent) => {
         if (snapshotFileContent !== formattedSnapshot)
           throw new Error(
             `The snapshot on the disk doesn't match the generated snapshot: ${snapshotPath}. Please run yarn locale-snapshots and commit the results.`
@@ -63,7 +67,7 @@ ${renderFormatRelative(locale)}
       return writeFile(snapshotPath, formattedSnapshot)
     }
   })
-).catch(err => {
+).catch((err) => {
   console.error(err.stack)
   process.exit(1)
 })
