@@ -1,7 +1,7 @@
 // @flow
 /* eslint-env mocha */
 
-import assert from 'power-assert'
+import assert from 'assert'
 import format from '.'
 
 describe('format', function () {
@@ -99,7 +99,7 @@ describe('format', function () {
         '30th',
         '31st',
       ]
-      assert.deepEqual(result, expected)
+      assert.deepStrictEqual(result, expected)
     })
   })
 
@@ -267,7 +267,7 @@ describe('format', function () {
         '4',
         '4',
       ]
-      assert.deepEqual(result, expected)
+      assert.deepStrictEqual(result, expected)
     })
   })
 
@@ -353,7 +353,7 @@ describe('format', function () {
           result.push(format(new Date(1986, 8 /* Sep */, i), 'i'))
         }
         var expected = ['1', '2', '3', '4', '5', '6', '7']
-        assert.deepEqual(result, expected)
+        assert.deepStrictEqual(result, expected)
       })
     })
 
@@ -369,7 +369,7 @@ describe('format', function () {
           result.push(format(new Date(1986, 8 /* Sep */, i), 'e'))
         }
         var expected = ['1', '2', '3', '4', '5', '6', '7']
-        assert.deepEqual(result, expected)
+        assert.deepStrictEqual(result, expected)
       })
 
       it('allows to specify which day is the first day of the week', function () {
@@ -380,7 +380,7 @@ describe('format', function () {
           )
         }
         var expected = ['1', '2', '3', '4', '5', '6', '7']
-        assert.deepEqual(result, expected)
+        assert.deepStrictEqual(result, expected)
       })
     })
 
@@ -396,7 +396,7 @@ describe('format', function () {
           result.push(format(new Date(1986, 8 /* Sep */, i), 'c'))
         }
         var expected = ['1', '2', '3', '4', '5', '6', '7']
-        assert.deepEqual(result, expected)
+        assert.deepStrictEqual(result, expected)
       })
 
       it('allows to specify which day is the first day of the week', function () {
@@ -407,7 +407,7 @@ describe('format', function () {
           )
         }
         var expected = ['1', '2', '3', '4', '5', '6', '7']
-        assert.deepEqual(result, expected)
+        assert.deepStrictEqual(result, expected)
       })
     })
   })
@@ -673,7 +673,7 @@ describe('format', function () {
 
     var date = new Date(2014, 3, 4)
 
-    // $ExpectedMistake
+    // @ts-expect-error
     assert(format(date, formatString) === '2014-04-04')
   })
 
@@ -691,7 +691,7 @@ describe('format', function () {
           },
         },
       }
-      // $ExpectedMistake
+      // @ts-expect-error
       var result = format(date, 'PPPP', { locale: customLocale })
       assert(result === 'It works!')
     })
@@ -700,7 +700,7 @@ describe('format', function () {
       var customLocale = {
         formatLong: {},
       }
-      // $ExpectedMistake
+      // @ts-expect-error
       var block = format.bind(null, date, 'yyyy-MM-dd', {
         locale: customLocale,
       })
@@ -709,10 +709,9 @@ describe('format', function () {
 
     it("throws `RangeError` if `options.locale` doesn't have `formatLong` property", function () {
       var customLocale = {
-        // $ExpectedMistake
         localize: {},
       }
-      // $ExpectedMistake
+      // @ts-expect-error
       var block = format.bind(null, date, 'yyyy-MM-dd', {
         locale: customLocale,
       })
@@ -721,7 +720,7 @@ describe('format', function () {
   })
 
   it('throws `RangeError` if `options.weekStartsOn` is not convertable to 0, 1, ..., 6 or undefined', function () {
-    // $ExpectedMistake
+    // @ts-expect-error
     var block = format.bind(null, new Date(2007, 11 /* Dec */, 31), 'yyyy', {
       weekStartsOn: NaN,
     })
@@ -729,7 +728,6 @@ describe('format', function () {
   })
 
   it('throws `RangeError` if `options.firstWeekContainsDate` is not convertable to 1, 2, ..., 7 or undefined', function () {
-    // $ExpectedMistake
     var block = format.bind(null, new Date(2007, 11 /* Dec */, 31), 'yyyy', {
       firstWeekContainsDate: NaN,
     })
@@ -740,9 +738,11 @@ describe('format', function () {
     assert.throws(format.bind(null, date, 'yyyy-MM-dd-nnnn'), RangeError)
   })
 
-  it('throws TypeError exception if passed less than 2 arguments', function () {
-    assert.throws(format.bind(null), TypeError)
-    assert.throws(format.bind(null, 1), TypeError)
+  it('throws TypeError exception if passed less than 2 arguments', function() {
+    // @ts-expect-error
+    assert.throws(() => format(), TypeError)
+    // @ts-expect-error
+    assert.throws(() => format(1), TypeError)
   })
 
   describe('useAdditionalWeekYearTokens and useAdditionalDayOfYearTokens options', () => {
@@ -759,7 +759,7 @@ describe('format', function () {
       const result = format(date, 'yyyy-MM-D', {
         useAdditionalDayOfYearTokens: true,
       })
-      assert.deepEqual(result, '1986-04-94')
+      assert.deepStrictEqual(result, '1986-04-94')
     })
 
     it('throws an error if DD token is used', () => {
@@ -775,7 +775,7 @@ describe('format', function () {
       const result = format(date, 'yyyy-MM-DD', {
         useAdditionalDayOfYearTokens: true,
       })
-      assert.deepEqual(result, '1986-04-94')
+      assert.deepStrictEqual(result, '1986-04-94')
     })
 
     it('throws an error if YY token is used', () => {
@@ -791,7 +791,7 @@ describe('format', function () {
       const result = format(date, 'YY-MM-dd', {
         useAdditionalWeekYearTokens: true,
       })
-      assert.deepEqual(result, '86-04-04')
+      assert.deepStrictEqual(result, '86-04-04')
     })
 
     it('throws an error if YYYY token is used', () => {
@@ -807,7 +807,7 @@ describe('format', function () {
       const result = format(date, 'YYYY-MM-dd', {
         useAdditionalWeekYearTokens: true,
       })
-      assert.deepEqual(result, '1986-04-04')
+      assert.deepStrictEqual(result, '1986-04-04')
     })
   })
 })
