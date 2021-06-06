@@ -40,7 +40,13 @@ import addLeadingZeros from '../_lib/addLeadingZeros/index'
  * const result = formatISO(new Date(2019, 8, 18, 19, 0, 52), { representation: 'time' })
  * //=> '19:00:52Z'
  */
-export default function formatISO(dirtyDate, dirtyOptions) {
+
+interface Options {
+  format?: 'extended' | 'basic'
+  representation?: 'complete' | 'date' | 'time'
+}
+
+export default function formatISO(dirtyDate: Date | number, options?: Options = {}): string {
   if (arguments.length < 1) {
     throw new TypeError(
       `1 argument required, but only ${arguments.length} present`
@@ -53,7 +59,6 @@ export default function formatISO(dirtyDate, dirtyOptions) {
     throw new RangeError('Invalid time value')
   }
 
-  const options = dirtyOptions || {}
   const format = options.format == null ? 'extended' : String(options.format)
   const representation =
     options.representation == null ? 'complete' : String(options.representation)
