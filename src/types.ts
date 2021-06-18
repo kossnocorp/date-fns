@@ -55,9 +55,12 @@ export interface DateValues {
   milliseconds?: number
 }
 
-export type Unit = 'second'
-  | 'minute'
-  | 'hour'
-  | 'day'
+export type Unit =
+  | 'year'
+  | 'quarter'
   | 'month'
-  | 'year';
+  | 'week'
+  | 'day'
+  | 'hour'
+  | 'minute'
+  | 'second'
