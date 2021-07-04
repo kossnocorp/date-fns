@@ -27,4 +27,4 @@ jobs:
       - name: Build Deno package
         run: ./scripts/build/deno.sh
       - name: Test Deno package
-        run: deno test test/deno/
+        run: ./scripts/test/deno.sh
