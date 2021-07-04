@@ -1,7 +1,7 @@
-import { WeekStartOptions } from '../types'
 import addWeeks from '../addWeeks/index'
 import startOfWeek from '../startOfWeek/index'
 import toDate from '../toDate/index'
+import { Interval, WeekStartOptions } from '../types'
 import requiredArgs from '../_lib/requiredArgs/index'
 
 /**
